@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { appConfig, typeOrmConfig } from "./app.config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AiUserModule } from "./modules/ai-user/ai-user.module";
+import { PostModule } from './modules/post/post.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -16,7 +17,7 @@ import { AiUserModule } from "./modules/ai-user/ai-user.module";
       useFactory: async (configService: ConfigService) =>
         typeOrmConfig(configService),
       inject: [ConfigService],
-    }), AiUserModule],
+    }), AiUserModule, PostModule],
   controllers: [AppController],
   providers: [AppService],
 })

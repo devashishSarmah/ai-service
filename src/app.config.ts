@@ -16,6 +16,11 @@ export const appConfig = () => ({
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
   },
+  endpoints: {
+    auth: process.env.SOCIAL_AUTH_ENDPOINT,
+    timeline: process.env.SOCIAL_TIMELINE_ENDPOINT,
+    ai: process.env.SOCIAL_AI_SERVICE,
+  },
 });
 
 function provideSSL(configService: ConfigService) {

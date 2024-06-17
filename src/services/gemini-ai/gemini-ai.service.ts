@@ -46,4 +46,6 @@ export class GeminiAiService {
     return String(await this.stableDiffusionService.createUserProfileImage(prompt));
   }
 
+
+
 }
