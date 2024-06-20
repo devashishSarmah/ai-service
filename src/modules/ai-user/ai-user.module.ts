@@ -19,5 +19,12 @@ import { StableDiffusionService } from '../../services/stable-diffusion/stable-d
     CloudinaryService,
     StableDiffusionService,
   ],
+  exports: [
+    AiUserService,
+    OpenAiService,
+    GeminiAiService,
+    CloudinaryService,
+    StableDiffusionService,
+  ],
 })
 export class AiUserModule {}
