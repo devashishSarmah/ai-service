@@ -6,8 +6,17 @@ import { StableDiffusionService } from '../stable-diffusion/stable-diffusion.ser
 @Injectable()
 export class GeminiAiService {
   genAI: GoogleGenerativeAI;
-  constructor(private configService: ConfigService, private stableDiffusionService: StableDiffusionService) {
-    this.genAI = new GoogleGenerativeAI(<string>this.configService.get<string>('geminiAPIKey'));
+  constructor(
+    private configService: ConfigService,
+    private stableDiffusionService: StableDiffusionService,
+  ) {
+    console.log(
+      'GeminiAiService: APIKEY: ',
+      this.configService.get<string>('geminiAPIKey'),
+    );
+    this.genAI = new GoogleGenerativeAI(
+      <string>this.configService.get<string>('geminiAPIKey'),
+    );
   }
 
   async generateUserProfile(): Promise<any> {
@@ -31,11 +40,13 @@ export class GeminiAiService {
     }
     `;
 
-    const model = this.genAI.getGenerativeModel({ model: 'gemini-1.5-flash' } );
+    const model = this.genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
     const propmtResponse = await model.generateContent(prompt);
 
-    const userProfile = JSON.parse(propmtResponse.response.text().replace(/```json|```/g, ''));
+    const userProfile = JSON.parse(
+      propmtResponse.response.text().replace(/```json|```/g, ''),
+    );
     userProfile.profile_picture_url = await this.generateProfilePicture();
 
     return userProfile;
@@ -43,9 +54,8 @@ export class GeminiAiService {
 
   async generateProfilePicture(): Promise<string> {
     const prompt = `Generate a photo of a person with a neutral expression, suitable for a profile picture`;
-    return String(await this.stableDiffusionService.createUserProfileImage(prompt));
+    return String(
+      await this.stableDiffusionService.createUserProfileImage(prompt),
+    );
   }
-
-
-
 }
