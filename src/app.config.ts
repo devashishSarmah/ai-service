@@ -25,8 +25,8 @@ export const appConfig = () => ({
   geminiAPIKey: process.env.GEMINI_API_KEY,
   openAIKey: process.env.OPENAI_API_KEY,
   cloudinaryAPIKey: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  cloudinaryAPISecret: process.env.CLOUDINARY_API_SECRET,
+  cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
   diffusionAPIKey: process.env.DIFFUSION_API_KEY,
 });
 
