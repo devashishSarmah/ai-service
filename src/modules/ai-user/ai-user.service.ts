@@ -25,12 +25,16 @@ export class AiUserService {
   async create(): Promise<AIUserClient> {
     const aiUserProfile = await this.geminiAiService.generateUserProfile();
 
+    console.log('aiUserProfile: ', aiUserProfile);
+
     const aiUserResponse: any = await firstValueFrom(
       this.httpService.post(
         `${this.configService.get<string>('endpoints.auth')}/user/ai/create`,
         aiUserProfile,
       ),
     );
+
+    console.log('aiUserResponse: ', aiUserResponse);
 
     const aiUserClient = this.AIUserClientRepository.create({
       client_id: aiUserResponse.data.ai.client_id,
