@@ -19,7 +19,7 @@ export class SshAuthGuard implements CanActivate {
 
   // Load authorized keys from file
   private loadAuthorizedKeys() {
-    const filePath = path.resolve(__dirname, '~/.ssh/authorized_keys');
+    const filePath = path.resolve(__dirname, '/home/dev/.ssh/authorized_keys');
     this.authorizedKeys = fs
       .readFileSync(filePath, 'utf8')
       .split('\n')
