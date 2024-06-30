@@ -34,6 +34,9 @@ export class StableDiffusionService {
         },
       ),
     );
+
+    console.log('createUserProfileImage', response);
+
     const url = await this.cloudinaryService.uploadImage(response.data.image);
     return url;
   }

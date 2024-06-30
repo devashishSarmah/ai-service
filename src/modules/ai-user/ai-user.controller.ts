@@ -1,7 +1,9 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Controller, Post, UseGuards } from '@nestjs/common';
 import { AiUserService } from './ai-user.service';
+import { SshAuthGuard } from '../../guards/ssh-auth/ssh-auth.guard';
 
 @Controller('ai-user')
+@UseGuards(SshAuthGuard)
 export class AiUserController {
   constructor(private readonly aiUserService: AiUserService) {}
 
