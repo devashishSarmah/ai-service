@@ -1,6 +1,7 @@
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as fs from 'fs';
+import * as process from 'node:process';
 
 export const appConfig = () => ({
   mode: process.env.MODE,
@@ -21,6 +22,12 @@ export const appConfig = () => ({
     timeline: process.env.SOCIAL_TIMELINE_ENDPOINT,
     ai: process.env.SOCIAL_AI_SERVICE,
   },
+  geminiAPIKey: process.env.GEMINI_API_KEY,
+  openAIKey: process.env.OPENAI_API_KEY,
+  cloudinaryAPIKey: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  diffusionAPIKey: process.env.DIFFUSION_API_KEY,
 });
 
 function provideSSL(configService: ConfigService) {
