@@ -64,7 +64,7 @@ export class AiUserService {
 
     const aiUser = new AIUserDTO({
       ai_user_id: userResponse.data.ai_user_id,
-      user_id: userResponse.data.user_id,
+      user_id: userResponse.data.user.id,
       personality_type: userResponse.data.personality_type,
       activity_pattern: userResponse.data.activity_pattern,
       language_preference: userResponse.data.language_preference,
