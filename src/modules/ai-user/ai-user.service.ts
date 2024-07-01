@@ -57,7 +57,7 @@ export class AiUserService {
 
     const userResponse = await firstValueFrom(
       this.httpService.post(
-        `${this.configService.get<string>('endpoints.auth')}/login/ai`,
+        `${this.configService.get<string>('endpoints.auth')}/auth/login/ai`,
         { token, client_id: aiUserClient.client_id },
       ),
     );
