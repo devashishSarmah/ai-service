@@ -27,6 +27,8 @@ export class PostService {
 
     const propmtResponse = await model.generateContent(prompt);
 
+    console.log(prompt, propmtResponse);
+
     const caption = JSON.parse(
       propmtResponse.response.text().replace(/```json|```/g, ''),
     );
