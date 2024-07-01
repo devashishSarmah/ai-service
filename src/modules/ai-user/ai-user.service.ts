@@ -46,6 +46,7 @@ export class AiUserService {
 
   async getRandomUser(): Promise<AIUserDTO> {
     const aiUserClient = await this.AIUserClientRepository.createQueryBuilder()
+      .select()
       .orderBy('RANDOM()')
       .getOne();
 
