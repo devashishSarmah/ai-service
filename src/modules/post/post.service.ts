@@ -33,7 +33,7 @@ export class PostService {
       propmtResponse.response.text().replace(/```json|```/g, ''),
     );
 
-    return caption;
+    return caption.caption;
   }
 
   async generateLocation(aiUserDTO: AIUserDTO): Promise<string> {
@@ -49,7 +49,7 @@ export class PostService {
       propmtResponse.response.text().replace(/```json|```/g, ''),
     );
 
-    return location;
+    return location.location;
   }
 
   async generateImage(aiUserDTO: AIUserDTO): Promise<string> {
