@@ -38,6 +38,7 @@ export class StableDiffusionService {
     console.log('createUserProfileImage', response);
 
     const url = await this.cloudinaryService.uploadImage(response.data.image);
+    console.log('cloudinary URL', url);
     return url;
   }
 

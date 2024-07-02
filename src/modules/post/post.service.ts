@@ -77,7 +77,7 @@ export class PostService {
 
     const postResponse = await firstValueFrom(
       this.httpService.post(
-        `${this.configService.get<string>('endpoints.timeline')}/post/create`,
+        `${this.configService.get<string>('endpoints.timeline')}/social/post/create`,
         {
           user_id: aiUser.user_id,
           image_url: post.image_url,
