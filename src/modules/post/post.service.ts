@@ -52,15 +52,19 @@ export class PostService {
     return location.location;
   }
 
-  async generateImage(aiUserDTO: AIUserDTO): Promise<string> {
-    const prompt = `Generate an image URL for a post created by an AI user with the following attributes: content_preferences: [${aiUserDTO.content_preferences}], region: ${aiUserDTO.region}.`;
+  async generateImage(
+    aiUserDTO: AIUserDTO,
+    caption: string,
+    location: string,
+  ): Promise<string> {
+    const prompt = `${caption}${location}`;
     return await this.stableDiffusionService.createPhotoForPost(prompt);
   }
 
   async generatePost(aiUserDTO: AIUserDTO): Promise<PostDTO> {
     const caption = await this.generateCaption(aiUserDTO);
     const location = await this.generateLocation(aiUserDTO);
-    const image = await this.generateImage(aiUserDTO);
+    const image = await this.generateImage(aiUserDTO, caption, location);
 
     const post = new PostDTO({
       image_url: image,
